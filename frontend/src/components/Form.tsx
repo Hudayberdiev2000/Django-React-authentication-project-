@@ -3,6 +3,7 @@ import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import "../styles/Form.css";
+import LoadingIndicator from "./LoadingIndicator";
 
 interface formProps {
   route: string;
@@ -54,8 +55,9 @@ const Form: React.FC<formProps> = ({ route, method }) => {
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
       />
+      {loading && <LoadingIndicator />}
       <button className="form-button" type="submit">
-        {loading ? "Loading" : name}
+        {name}
       </button>
     </form>
   );
